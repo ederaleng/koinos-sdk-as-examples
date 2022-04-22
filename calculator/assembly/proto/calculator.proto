@@ -52,3 +52,18 @@ message div_arguments {
 message div_result {
   int64 value = 1;
 }
+
+
+/*
+  @description Divide two integers
+  @read-only true
+*/
+message testing_arguments {
+  int64 x = 1;
+  int64 y = 2;
+  int64 z = 3;
+}
+
+message testing_result {
+  int64 value = 1;
+}

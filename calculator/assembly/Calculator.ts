@@ -1,4 +1,4 @@
-import { SafeMath } from "koinos-sdk-as";
+import { SafeMath, System, u128 } from "koinos-sdk-as";
 import { calculator } from "./proto/calculator";
 
 export class Calculator {
@@ -39,6 +39,17 @@ export class Calculator {
     const res = new calculator.div_result();
     res.value = SafeMath.div(x, y);
 
+    return res;
+  }
+
+  testing(args: calculator.testing_arguments): calculator.testing_result {
+    const x = u128.fromU64(args.x);
+    const y = u128.fromU64(args.y);
+    const z = u128.fromU64(args.z);
+
+    const res = new calculator.testing_result();
+    let r = SafeMath.div(SafeMath.mul(x, y), z);
+    res.value = r.toU64();
     return res;
   }
 }

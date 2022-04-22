@@ -45,4 +45,16 @@ describe("calculator", () => {
 
     expect(res.value).toBe(111);
   });
+
+  it("should testing u128", () => {
+    const calc = new Calculator();
+
+    const t: u64 = 18446744073709551610;
+    const args = new calculator.testing_arguments(t, t, t);
+    const res = calc.testing(args);
+
+    console.log(`testing: ${ res.value }` );
+
+    expect(res.value).toBe(18446744073709551610);
+  });
 });
